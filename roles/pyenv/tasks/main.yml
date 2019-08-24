@@ -16,6 +16,8 @@
     eval "$(pyenv-virtualenv init -)" &&
     pyenv install 3.7.4 &&
     pyenv virtualenv 3.7.4 neovim3
+  args:
+    creates: "{{ pyenv_root }}/versions/bin/neovim3/python"
 
 - name: Install neovim module
   shell: >-
