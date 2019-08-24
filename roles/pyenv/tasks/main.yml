@@ -16,3 +16,11 @@
     eval "$(pyenv-virtualenv init -)" &&
     pyenv install 3.7.4 &&
     pyenv virtualenv 3.7.4 neovim3
+
+- name: Install neovim module
+  shell: >-
+    export PATH="{{ pyenv_root }}/bin:$PATH" &&
+    eval "$(pyenv init -)" &&
+    eval "$(pyenv-virtualenv init -)" &&
+    pyenv activate neovim3
+    pip install pynvim
