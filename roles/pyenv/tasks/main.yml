@@ -14,7 +14,7 @@
     export PATH="{{ pyenv_root }}/bin:$PATH" &&
     eval "$(pyenv init -)" &&
     eval "$(pyenv-virtualenv init -)" &&
-    pyenv install 3.7.4 &&
+    pyenv install {{item}}
   args:
     creates: "{{ pyenv_root }}/versions/{{item}}/bin/python"
   with_items:
