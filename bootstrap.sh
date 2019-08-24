@@ -4,15 +4,15 @@ if [ $(command -v brew) ]; then
     # Do something under Mac OS X platform        
     INSTALL_CMD="brew install"
 elif [ $(command -v pacman)]; then
-    INSTALL_CMD="pacman -S"
+    INSTALL_CMD="sudo pacman -S --noconfirm"
 fi
 
-if [ $(command -v git) ]; then
+if [ -z $(command -v git) ]; then
   echo "Installing git"
   eval "$INSTALL_CMD git"
 fi
 
-if [ $(command -v git) ]; then
+if [ -z $(command -v git) ]; then
   echo "Installing ansible"
   eval "$INSTALL_CMD ansible"
 fi
