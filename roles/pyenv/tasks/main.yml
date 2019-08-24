@@ -18,6 +18,7 @@
   args:
     creates: "{{ pyenv_root }}/versions/{{item}}/bin/python"
   with_items:
+    - 2.7.16
     - 3.7.4
 
 - name: Create virtualenv for neovim
@@ -31,4 +32,5 @@
   args:
     creates: "{{ pyenv_root }}/versions/{{item.name}}/bin/python"
   with_items:
-    - { python_version: 3.7.4, name: neovim3 }
+    - { python_version: 2.7.16, name: neovim2 }
+    - { python_version: 3.7.4,  name: neovim3 }
