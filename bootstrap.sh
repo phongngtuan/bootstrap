@@ -12,6 +12,11 @@ if [ $(command -v git) ]; then
   eval "$INSTALL_CMD git"
 fi
 
+if [ $(command -v git) ]; then
+  echo "Installing ansible"
+  eval "$INSTALL_CMD ansible"
+fi
+
 BOOTSTRAP_DIR="$HOME/bootstrap"
 git clone https://github.com/phongngtuan/bootstrap.git $BOOTSTRAP_DIR
 
