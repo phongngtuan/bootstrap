@@ -12,13 +12,13 @@ if [ -z $(command -v git) ]; then
   eval "$INSTALL_CMD git"
 fi
 
-if [ -z $(command -v git) ]; then
+if [ -z $(command -v ansible-playbook) ]; then
   echo "Installing ansible"
   eval "$INSTALL_CMD ansible"
 fi
 
-BOOTSTRAP_DIR="$HOME/bootstrap"
-git clone https://github.com/phongngtuan/bootstrap.git $BOOTSTRAP_DIR
+#BOOTSTRAP_DIR="$HOME/bootstrap"
+#git clone https://github.com/phongngtuan/bootstrap.git $BOOTSTRAP_DIR
 
 #DOTFILE_DIR="$HOME/.dot"
 #if [ -d "$DOTFILE_DIR" ]; then
