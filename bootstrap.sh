@@ -3,7 +3,7 @@
 if [ $(command -v brew) ]; then
     # Do something under Mac OS X platform        
     INSTALL_CMD="brew install"
-elif [ $(command -v pacman)]; then
+elif [ $(command -v pacman) ]; then
     INSTALL_CMD="sudo pacman -S --noconfirm"
 fi
 
