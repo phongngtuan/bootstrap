@@ -2,3 +2,4 @@
   roles:
   - { role: pyenv , tags: ["pyenv"] }
   - { role: nvm ,   tags: ["nvm"] }
+  - { role: rustup, tags: ["rustup"] }
