@@ -1,0 +1,9 @@
+---
+- name: clone github repo
+  git:
+    repo: git@github.com:phongngtuan/dot.git
+    dest: "{{ ansible_env.HOME }}/.dot"
+- name: stow the config
+  shell: stow config
+  args:
+    chdir: "{{ ansible_env.HOME }}/.dot"
