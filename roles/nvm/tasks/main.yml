@@ -6,7 +6,5 @@
     creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
 - name: Install Node interpreters
-  shell: >-
-    source "{{ ansible_env.HOME }}/.nvm/nvm.sh" &&
-    eval "nvm install --lts"
+  shell: ". {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install --lts"
 
