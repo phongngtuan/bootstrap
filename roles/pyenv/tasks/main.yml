@@ -19,7 +19,8 @@
     path: "{{virtualenv_root}}"
     state: directory
 
-- name: manually create venv for neovim
-  command:
-    cmd: python3 -m venv {{virtualenv_root}}/ntp ntp
-
+- name: install user requirements
+  pip:
+    name: pynvim
+    virtualenv: "{{virtualenv_root}}/ntp"
+    virtualenv_command: python3 -m venv
