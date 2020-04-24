@@ -4,33 +4,22 @@
     repo: https://github.com/pyenv/pyenv.git
     dest: "{{ pyenv_root }}"
 
-- name: Clone pyenv-virtualenv
-  git:
-    repo: https://github.com/pyenv/pyenv-virtualenv.git
-    dest: "{{ pyenv_root }}/plugins/pyenv-virtualenv"
-
 - name: Install Python interpreters
   shell: >-
     export PATH="{{ pyenv_root }}/bin:$PATH" &&
     eval "$(pyenv init -)" &&
-    eval "$(pyenv-virtualenv init -)" &&
     pyenv install {{item}}
   args:
     creates: "{{ pyenv_root }}/versions/{{item}}/bin/python"
   with_items:
-    - 2.7.16
-    - 3.7.4
+    - 3.8.2
 
-- name: Create virtualenv for neovim
-  shell: >-
-    export PATH="{{ pyenv_root }}/bin:$PATH" &&
-    eval "$(pyenv init -)" &&
-    eval "$(pyenv-virtualenv init -)" &&
-    pyenv virtualenv {{item.python_version}} {{item.name}} &&
-    pyenv activate {{item.name}} &&
-    pip install pynvim
-  args:
-    creates: "{{ pyenv_root }}/versions/{{item.name}}/bin/python"
-  with_items:
-    - { python_version: 2.7.16, name: neovim2 }
-    - { python_version: 3.7.4,  name: neovim3 }
+- name: Create virtualenvs dir
+  file:
+    path: "{{virtualenv_root}}"
+    state: directory
+
+- name: manually create venv for neovim
+  command:
+    cmd: python3 -m venv {{virtualenv_root}}/ntp ntp
+
