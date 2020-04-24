@@ -3,6 +3,31 @@
   git:
     repo: git@github.com:phongngtuan/dot.git
     dest: "{{ ansible_env.HOME }}/.dot"
+- name: gather all existing rc files
+  stat:
+    path: "{{ ansible_env.HOME }}/{{item}}"
+  with_items:
+    - ".profile"
+    - ".bashrc"
+    - ".bash_profile"
+    - ".zshrc"
+  register: rc_files
+
+- debug:
+    msg: 'going to back up these file {{item.stat.path}}'
+  with_items: "{{rc_files.results}}"
+  when: item.stat.exists
+
+- name: create backup repo to keep all existing file
+  file:
+    path: "{{ ansible_env.HOME }}/backuprc"
+    state: directory
+
+- name: moving file to backup dir
+  command: mv {{item.stat.path}} {{ ansible_env.HOME }}/backuprc
+  with_items: "{{rc_files.results}}"
+  when: item.stat.exists
+
 - name: stow the config
   shell: stow config
   args:
