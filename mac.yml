@@ -2,5 +2,5 @@
   tasks:
     - name: Install prerequisite
       homebrew:
-        name: [stow, neovim, ripgrep]
+        name: [stow, neovim, ripgrep, tmux, fd]
 - import_playbook: bootstrap.yml

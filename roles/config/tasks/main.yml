@@ -28,6 +28,11 @@
   with_items: "{{rc_files.results}}"
   when: item.stat.exists
 
+- name: make config dir to make sure we don't symlink the whole config
+  file:
+    path: "{{ ansible_env.HOME }}/.config"
+    state: directory
+
 - name: stow the config
   shell: stow config
   args:
@@ -38,3 +43,10 @@
     repo: https://github.com/sorin-ionescu/prezto.git
     dest: "{{ ansible_env.HOME }}/.zprezto"
     recursive: True
+
+#- name: clone tmux plugin manager
+#  git:
+#    repo: https://github.com/tmux-plugins/tpm
+#    dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
+#  tags:
+#  - tmux
