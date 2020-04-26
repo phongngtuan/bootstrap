@@ -23,4 +23,4 @@
   pip:
     name: pynvim
     virtualenv: "{{virtualenv_root}}/ntp"
-    virtualenv_command: python3 -m venv
+    virtualenv_command: "{{ pyenv_root }}/versions/3.8.2/bin/python -m venv"

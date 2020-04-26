@@ -1,6 +1,6 @@
 - hosts: localhost
   roles:
+  - { role: config, tags: ["config"] }
   - { role: pyenv , tags: ["pyenv"] }
   - { role: nvm ,   tags: ["nvm"] }
   - { role: rustup, tags: ["rustup"] }
-  - { role: config, tags: ["config"] }

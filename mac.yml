@@ -1,0 +1,6 @@
+- hosts: localhost
+  tasks:
+    - name: Install prerequisite
+      homebrew:
+        name: [stow, neovim, ripgrep]
+- import_playbook: bootstrap.yml
