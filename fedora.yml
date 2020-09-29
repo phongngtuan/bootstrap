@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks:
+    - name: Install prerequisite
+      become: yes
+      dnf:
+        name: ['git', 'stow', 'vim', 'neovim', 'tmux']
+#- import_playbook: bootstrap.yml
