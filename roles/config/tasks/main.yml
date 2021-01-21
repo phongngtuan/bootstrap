@@ -3,6 +3,7 @@
   git:
     repo: git@github.com:phongngtuan/dot.git
     dest: "{{ ansible_env.HOME }}/.dot"
+    branch: "{{config_branch}}"
 - name: gather all existing rc files
   stat:
     path: "{{ ansible_env.HOME }}/{{item}}"
